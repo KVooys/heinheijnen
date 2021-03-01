@@ -51,13 +51,13 @@ export default function MainFeaturedPost(props: MainFeaturedPostProps) {
   return (
     <Paper
       className={classes.mainFeaturedPost}
-      style={{ backgroundImage: `url(${post.image})` }}
+      style={{ backgroundImage: `url("../public/background.jpg"})` }}
     >
       {/* Increase the priority of the hero background image */}
       {<img style={{ display: 'none' }} src={post.image} alt={post.imageText} />}
       <div className={classes.overlay} />
       <Grid container>
-        <Grid item md={6}>
+        <Grid item md={12}>
           <div className={classes.mainFeaturedPostContent}>
             <Typography component="h1" variant="h3" color="inherit" gutterBottom>
               {post.title}
