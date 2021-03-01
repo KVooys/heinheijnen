@@ -7,21 +7,20 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
-import Avatar from '@material-ui/core/Avatar';
+import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import { red } from '@material-ui/core/colors';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    media: {
-      height: 0,
-      paddingTop: '56.25%', // 16:9
+    media: {      
+      height: 400,
+      width: 280,
+      paddingTop: '56.25%', // 16:9,
     },
     expand: {
-      transform: 'rotate(0deg)',
-      marginLeft: 'auto',
+      // transform: 'rota te(0deg)',
       transition: theme.transitions.create('transform', {
         duration: theme.transitions.duration.shortest,
       }),
@@ -29,14 +28,24 @@ const useStyles = makeStyles((theme: Theme) =>
     expandOpen: {
       transform: 'rotate(180deg)',
     },
-    avatar: {
-      backgroundColor: red[500],
-    },
   }),
 );
 
-export default function PostCard() {
+interface PostCardProps {
+  post: {
+    date: string;
+    description: string[];
+    image1: string;
+    image2: string;
+    imageText: string;
+    title: string;
+  };
+}
+
+
+export default function PostCard(props: PostCardProps) {
   const classes = useStyles();
+  const { post } = props;
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
@@ -46,26 +55,35 @@ export default function PostCard() {
   return (
     <Card>
       <CardHeader
-        avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
-            R
-          </Avatar>
-        }
-        title="Shrimp and Chorizo Paella"
-        subheader="September 14, 2016"
+        title={post.title}
+        subheader={post.date}
       />
+      <Grid container  spacing={1}>
+        <Grid item md={6}>
+      <CardContent>
+        {post.description.map((text) => (
+          <Typography variant="body2" color="textSecondary" component="p" paragraph={true}>
+          {text}
+        </Typography>
+        ))}
+      </CardContent>
+      </Grid>
+      <Grid item md={3}>
       <CardMedia
         className={classes.media}
-        image="/static/images/cards/paella.jpg"
-        title="Paella dish"
+        image={post.image1}
+        title={post.title}
       />
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          This impressive paella is a perfect party dish and a fun meal to cook together with your
-          guests. Add 1 cup of frozen peas along with the mussels, if you like.
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
+      </Grid>
+      <Grid item md={3}>
+      <CardMedia
+        className={classes.media}
+        image={post.image2}
+        title={post.title}
+      />
+      </Grid>
+      </Grid>
+      <CardActions>
         <IconButton
           className={clsx(classes.expand, {
             [classes.expandOpen]: expanded,
@@ -74,6 +92,7 @@ export default function PostCard() {
           aria-expanded={expanded}
           aria-label="show more"
         >
+          Lees meer...
           <ExpandMoreIcon />
         </IconButton>
       </CardActions>
@@ -104,6 +123,7 @@ export default function PostCard() {
           </Typography>
         </CardContent>
       </Collapse>
+      
     </Card>
   );
 }
