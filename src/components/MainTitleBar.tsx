@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     padding: theme.spacing(3),
     [theme.breakpoints.up('md')]: {
-      padding: theme.spacing(6),
+      // padding: theme.spacing(5),
       paddingRight: 0,
     },
   },
@@ -51,7 +51,7 @@ export default function MainFeaturedPost(props: MainFeaturedPostProps) {
   return (
     <Paper
       className={classes.mainFeaturedPost}
-      style={{ backgroundImage: `url("../public/background.jpg"})` }}
+      style={{ backgroundImage: `url(${post.image})` }}
     >
       {/* Increase the priority of the hero background image */}
       {<img style={{ display: 'none' }} src={post.image} alt={post.imageText} />}
