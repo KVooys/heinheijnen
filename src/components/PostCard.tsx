@@ -63,7 +63,7 @@ export default function PostCard(props: PostCardProps) {
       <CardContent>
         {post.description.map((text) => (
           <Typography variant="body2" color="textSecondary" component="p" paragraph={true}>
-          {text}
+            {text}
         </Typography>
         ))}
       </CardContent>

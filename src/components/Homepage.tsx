@@ -30,12 +30,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const mainTitleBar = {
-  title: 'Title of a longer featured blog post',
+  title: 'Over de auteur',
   description:
-    "Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.",
+    [`Van jongs af aan ontmoette Hein Heijnen zonderlinge figuren in wie hij zich herkende. 
+    Liefdevol schetst hij ze in zijn flitsverhalen.`,
+    `Hij speelt iedere dag piano, ook in een trio dat de blues en songs uit The American Songbook brengt. In 2014 verscheen zijn schaakroman Rokade. 
+    Momenteel werkt Hein Heijnen aan een bundel korte verhalen.`],
   image: 'https://source.unsplash.com/random',
   imageText: 'main image description',
-  linkText: 'Continue reading…',
+  linkText: 'Contact via e-mail: hein.vanderkroon@gmail.com',
 };
 
 const featuredPosts = [
@@ -43,7 +46,7 @@ const featuredPosts = [
     title: 'Toverdrankjes voor geluk',
     date: 'Januari 2018',
     description:
-      [`De bundel Toverdrankjes voor Geluk bevat 20 duetten, een samenspel van Heijn Heijnen en Merik van der Torren. 
+      [`De bundel Toverdrankjes voor Geluk bevat 20 duetten, een samenspel van Hein Heijnen en Merik van der Torren. 
       Elk duet bestaat uit een verhaal gevolgd door een passend gedicht. De sfeer is meestal opgewekt-weemoedig. 
       In de meeste verhalen speelt de troost door muziek een rol.`,
       `Volgens de filosoof Plato dringt niets zo diep door in het binnenste van de ziel als ritme en melodie. 
@@ -91,24 +94,25 @@ export default function Blog() {
           Hein Heijnen - homepage van de auteur
         </Typography>
       <Container>
-        <main>
-          <MainTitleBar post={mainTitleBar} />
+        <main>          
           <Grid container spacing={4} className={classes.mainGrid}>
             {featuredPosts.map((post) => (
               <Grid item md={12}>
               <PostCard key={post.title} post={post} />
               </Grid>
             ))}
-          </Grid>
+          </Grid>          
         </main>
-      </Container>  
+        <MainTitleBar post={mainTitleBar} />  
+      </Container>
+      
       {/* Footer     */}
       <Typography          
         component="h2"
         variant="h5"
         color="inherit"
         className={classes.footer}>
-          Made with Material UI
+          Gemaakt in React & Material UI
         </Typography>
     </React.Fragment>
   );

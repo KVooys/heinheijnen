@@ -10,7 +10,8 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     backgroundColor: theme.palette.grey[800],
     color: theme.palette.common.white,
-    marginBottom: theme.spacing(4),
+    marginTop: theme.spacing(3),
+    marginBottom: theme.spacing(3),
     backgroundImage: 'url(https://source.unsplash.com/random)',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
@@ -36,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
 
 interface MainFeaturedPostProps {
   post: {
-    description: string;
+    description: string[];
     image: string;
     imageText: string;
     linkText: string;
@@ -62,10 +63,12 @@ export default function MainFeaturedPost(props: MainFeaturedPostProps) {
             <Typography component="h1" variant="h3" color="inherit" gutterBottom>
               {post.title}
             </Typography>
+            {post.description.map((text) => (
             <Typography variant="h5" color="inherit" paragraph>
-              {post.description}
+              {text}
             </Typography>
-            <Link variant="subtitle1" href="#">
+            ))}
+            <Link variant="subtitle1" href="mailto:hein.vanderkroon@gmail.com">
               {post.linkText}
             </Link>
           </div>
