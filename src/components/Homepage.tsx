@@ -4,7 +4,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import Header from './Header';
-import MainFeaturedPost from './MainFeaturedPost';
+import MainTitleBar from './MainTitleBar';
 import FeaturedPost from './FeaturedPost';
 import Footer from './Footer';
 
@@ -51,7 +51,7 @@ export default function Blog() {
       <Container maxWidth="lg">
         <Header title="Hein Heijnen - homepage van de auteur"/>
         <main>
-          <MainFeaturedPost post={mainFeaturedPost} />
+          <MainTitleBar post={mainFeaturedPost} />
           <Grid container spacing={4} className={classes.mainGrid}>
             {featuredPosts.map((post) => (
               <FeaturedPost key={post.title} post={post} />

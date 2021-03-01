@@ -1,8 +1,8 @@
-import Blog from "./components/Blog";
+import Homepage from "./components/Homepage";
 
 function App() {
   return (
-    <Blog/>
+    <Homepage/>
   );
 }
 
