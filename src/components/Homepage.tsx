@@ -3,11 +3,17 @@ import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
-import Header from './Header';
+import Typography from '@material-ui/core/Typography';
 import MainTitleBar from './MainTitleBar';
 import FeaturedPost from './FeaturedPost';
 
 const useStyles = makeStyles((theme) => ({
+  title: {
+    margin: theme.spacing(3),
+    textAlign: "center",
+    fontSize: "2em",
+    fontWeight: 600,
+  },
   mainGrid: {
     marginTop: theme.spacing(3),
   },
@@ -47,8 +53,16 @@ export default function Blog() {
   return (
     <React.Fragment>
       <CssBaseline />
-      <Container maxWidth="lg">
-        <Header title="Hein Heijnen - homepage van de auteur"/>
+      {/* Title */}
+      <Typography          
+        component="h2"
+        variant="h5"
+        color="inherit"
+        noWrap
+        className={classes.title}>
+          Hein Heijnen - homepage van de auteur
+        </Typography>
+      <Container>
         <main>
           <MainTitleBar post={mainTitleBar} />
           <Grid container spacing={4} className={classes.mainGrid}>
